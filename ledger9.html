@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joint Ledger</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    .add-entry-container {
+      margin-bottom: 20px;
+    }
+    .add-entry-container input[type="text"],
+    .add-entry-container input[type="number"],
+    .add-entry-container button,
+    .add-entry-container select {
+      padding: 10px;
+      margin: 5px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      box-sizing: border-box;
+    }
+    .add-entry-container button {
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .add-entry-container button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Joint Ledger</h2>
+
+<div class="add-entry-container">
+  <input type="text" id="orderId" placeholder="Order Id">
+  <input type="number" id="diamonds" placeholder="Diamonds">
+  <button onclick="addEntry()">Add Entry</button>
+</div>
+
+<table id="ledger">
+  <thead>
+    <tr>
+      <th>Order Id</th>
+      <th>Diamonds</th>
+      <th>Price</th>
+      <th>Cost Price</th>
+      <th>Profit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Ledger entries will be added here dynamically -->
+  </tbody>
+</table>
+
+<script>
+  function addEntry() {
+    var orderId = document.getElementById('orderId').value;
+    var diamonds = parseFloat(document.getElementById('diamonds').value);
+    var price, costPrice;
+    
+    if (diamonds === 86) {
+      price = 120;
+      costPrice = 110.7;
+    } else if (diamonds === 172) {
+      price = 240 ;
+      costPrice = 219.6 ;
+    }  else if (diamonds === 257) {
+      price = 360;
+      costPrice = 319.5;
+    } else if (diamonds === 343) {
+      price = 480;
+      costPrice = 435.2;
+    } else if (diamonds === 429 ) {
+      price = 600;
+      costPrice = 539.1 ;
+    } else if (diamonds === 514) {
+      price = 720;
+      costPrice = 639;
+    } else if (diamonds === 600) {
+      price = 840;
+      costPrice = 749.7;
+    } else if (diamonds === 706) {
+      price = 970;
+      costPrice = 864;
+    } else if (diamonds === 792) {
+      price = 1090;
+      costPrice = 974.7;
+    } else if (diamonds === 878) {
+      price = 1210;
+      costPrice = 1083.6;
+    } else if (diamonds === 963) {
+      price = 1330;
+      costPrice = 1183.5;
+    } else if (diamonds === 1050) {
+      price = 1450;
+      costPrice = 974.7;
+    } else if (diamonds === 1135) {
+      price = 1570;
+      costPrice = 1403.1;
+    } else if (diamonds === 1412) {
+      price = 1950;
+      costPrice = 1728;
+    } else if (diamonds === 2195) {
+      price = 2900;
+      costPrice = 2615.4;
+    } else if (diamonds === 2367) {
+      price = 3200;
+      costPrice = 2833.2;
+    } else if (diamonds === 2901) {
+      price = 3800;
+      costPrice = 3479.4;
+    } else if (diamonds === 3688) {
+      price = 4800;
+      costPrice = 4363.2;
+    } else if (diamonds === 5532) {
+      price = 7100;
+      costPrice = 6588;
+    } else if (diamonds === 6042) {
+      price = 8000;
+      costPrice = 7344;
+    } else if (diamonds === 9288) {
+      price = 11900;
+      costPrice = 10942.2;
+    } else {
+      price = 0;
+      costPrice = 0;
+    }
+    
+    var profit = price - costPrice;
+
+    if (!orderId || !diamonds || isNaN(diamonds)) {
+      alert("Please enter valid Order Id and Diamonds");
+      return;
+    }
+
+    var table = document.getElementById('ledger').getElementsByTagName('tbody')[0];
+    var newRow = table.insertRow(table.rows.length);
+    var cell1 = newRow.insertCell(0);
+    var cell2 = newRow.insertCell(1);
+    var cell3 = newRow.insertCell(2);
+    var cell4 = newRow.insertCell(3);
+    var cell5 = newRow.insertCell(4);
+    cell1.innerHTML = orderId;
+    cell2.innerHTML = diamonds;
+    cell3.innerHTML = '$' + price.toFixed(2);
+    cell4.innerHTML = '$' + costPrice.toFixed(2);
+    cell5.innerHTML = '$' + profit.toFixed(2);
+
+    document.getElementById('orderId').value = "";
+    document.getElementById('diamonds').value = "";
+  }
+</script>
+
+</body>
+</html>
